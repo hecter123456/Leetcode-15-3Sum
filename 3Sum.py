@@ -9,6 +9,10 @@ class unitest(unittest.TestCase):
         Input = [-1, 0, 1, 2, -1, -4]
         ans = [[-1, -1, 2],[-1, 0, 1]]
         self.assertEqual(Solution().threeSum(Input),ans);
+    def testDuplicateCase(self):
+        Input = [-2,0,3,-1,4,0,3,4,1,1,1,-3,-5,4,0]
+        ans = [[-5,1,4],[-3,-1,4],[-3,0,3],[-2,-1,3],[-2,1,1],[-1,0,1],[0,0,0]]
+        self.assertEqual(Solution().threeSum(Input),ans);
 
 class Solution():
     def threeSum(self, nums):
@@ -28,9 +32,9 @@ class Solution():
                     right -= 1
                 else:
                     ans.append([nums[i], nums[left], nums[right]])
-                    if left < right and nums[left] == nums[left+1]:
+                    while left < right and nums[left] == nums[left+1]:
                         left += 1
-                    if left < right and nums[right] == nums[right-1]:
+                    while left < right and nums[right] == nums[right-1]:
                         right -= 1
                     left += 1
                     right -= 1
